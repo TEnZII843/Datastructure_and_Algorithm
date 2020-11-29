@@ -133,8 +133,8 @@ public class Solution<Key extends Comparable<Key>, Value> {
     //  * @throws IllegalArgumentException if {@code key} is {@code null}
     //  */
     public Key floor(Key key) {
-        if (key == null) throw new IllegalArgumentException("Argument to floor() is null ");
-        if (isEmpty()) throw new NoSuchElementException("called floor() with empty symboltable");
+        if (key == null) throw new IllegalArgumentException("No particular key that was being searched. ");
+        if (isEmpty()) throw new NoSuchElementException("Empty symboltable");
             Node x = floor(root,key);
             if(x == null)
                 return null;
@@ -157,7 +157,7 @@ public class Solution<Key extends Comparable<Key>, Value> {
         return small;
     } 
     // /**
-    //  * Return the key in the symbol table whose rank is {@code k}.
+    //  * Return the key in the symbol table whose rank is {@code rank}.
     //  * This is the (rank+1)st smallest key in the symbol table.
     //  *
     //  * @param  rank the order statistic
@@ -166,7 +166,7 @@ public class Solution<Key extends Comparable<Key>, Value> {
     //  *        <em>n</em>–1
     //  */
     public Key select(int rank) {
-        if(rank<0 || rank>=size()) throw new IllegalArgumentException("sorry!!!");
+        if(rank<0 || rank>=size()) throw new IllegalArgumentException("The rank must be between 0 to size-1.");
         Node x = select(root, rank);
         return x.key;
     }
@@ -174,15 +174,15 @@ public class Solution<Key extends Comparable<Key>, Value> {
     // Return key of rank k. 
     private Node select(Node x, int r) {
         int count = -1;
-        ArrayList<Node> stack = new ArrayList<Node>();
+        ArrayList<Node> arr = new ArrayList<Node>();
         Node curr = x;
-        while(!stack.isEmpty() || curr!=null){
+        while(!arr.isEmpty() || curr!=null){
             if(curr!=null){
-                stack.add(curr);
+                arr.add(curr);
                 curr = curr.left;
             } 
             else{
-                curr = stack.remove(stack.size()-1);
+                curr = arr.remove(arr.size()-1);
                 count++;
                 if(count==r) break;
                 curr = curr.right;
