@@ -61,12 +61,10 @@ public class Solution<Key extends Comparable<Key>, Value> {
                 } 
             } 
         } 
-          
         return count; 
     } 
     /**
      * Returns the value associated with the given key.
-     *
      * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
      *         and {@code null} if the key is not in the symbol table
@@ -116,8 +114,7 @@ public class Solution<Key extends Comparable<Key>, Value> {
     //  * @throws NoSuchElementException if the symbol table is empty
     //  */
     public Key min() {
-        if (isEmpty())throw new NoSuchElementException("Called min()");
-
+        if (isEmpty())throw new NoSuchElementException("Symbol table is empty");
         return (min(root).key);                     
     } 
     private Node min(Node x) { 
@@ -130,7 +127,6 @@ public class Solution<Key extends Comparable<Key>, Value> {
     } 
     // /**
     //  * Returns the largest key in the symbol table less than or equal to {@code key}.
-    //  *
     //  * @param  key the key
     //  * @return the largest key in the symbol table less than or equal to {@code key}
     //  * @throws NoSuchElementException if there is no such key
